@@ -65,9 +65,9 @@ def version():
 		print(serial[0])
 
 #finding ios image in output using regular expressions
-#		regex_ios = re.compile(r'System\simage\s\file\sis\s"([^.*"])')
-#		ios = regex_ios.findall(output)
-#		print(ios)
+		regex_ios = re.search(r'(?<=System image file is )(.*)', output))
+		ios = regex_ios.group()
+		print(ios)
 
 #finding model in output using regular expressions
 		regex_model = re.compile(r'[Cc]isco\s(\S+).*memory.')
@@ -77,7 +77,7 @@ def version():
 		print(device['ip'])    # print current ip address of router on screen
   
 #append results to table [hostname,uptime,version,serial,ios,model]
-		devices.append([device['ip'],hostname[0],uptime[0],version[0],serial[0],model[0]])
+		devices.append([device['ip'],hostname[0],uptime[0],version[0],serial[0],ios,model[0]])
   
 #print all results (for all routers) on screen    
 	for i in devices:
